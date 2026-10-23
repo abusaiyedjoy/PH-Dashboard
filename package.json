@@ -1,0 +1,31 @@
+{
+  "name": "project-review-hub",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Project Submission & Review Dashboard for Associate Web Instructor hiring assessment",
+  "workspaces": [
+    "packages/*",
+    "apps/*"
+  ],
+  "scripts": {
+    "dev": "concurrently -n \"api,web\" -c \"blue,green\" \"npm run dev -w @project-review-hub/api\" \"npm run dev -w @project-review-hub/web\"",
+    "dev:api": "npm run dev -w @project-review-hub/api",
+    "dev:web": "npm run dev -w @project-review-hub/web",
+    "build": "npm run build -w @project-review-hub/database && npm run build -w @project-review-hub/api && npm run build -w @project-review-hub/web",
+    "build:api": "npm run build -w @project-review-hub/api",
+    "build:web": "npm run build -w @project-review-hub/web",
+    "build:db": "npm run build -w @project-review-hub/database",
+    "typecheck": "npm run typecheck -w @project-review-hub/database && npm run typecheck -w @project-review-hub/api && npm run typecheck -w @project-review-hub/web",
+    "lint": "npm run lint -w @project-review-hub/api && npm run lint -w @project-review-hub/web",
+    "test": "npm run test -w @project-review-hub/api",
+    "db:migrate": "npm run db:migrate -w @project-review-hub/database",
+    "db:generate": "npm run db:generate -w @project-review-hub/database",
+    "db:seed": "npm run db:seed -w @project-review-hub/database",
+    "db:studio": "npm run db:studio -w @project-review-hub/database"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.0",
+    "rimraf": "^6.0.1",
+    "typescript": "^5.6.3"
+  }
+}
